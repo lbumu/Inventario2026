@@ -15,4 +15,22 @@ class Product extends Model
         'category_id',
     ];
 
+    //Relacion uno a muchos inversa
+    public function category()
+    {
+        return $this->belongsTo(Category::class);       
+    }
+
+    //Relacion uno a muchos
+    public function inventories()
+    {
+        return $this->hasMany(Inventory::class);
+    }
+
+    //Relacion polimorfica 
+    public function images()
+    {
+        return $this->morphMany(Image::class, 'imageable');
+    }
+    
 }

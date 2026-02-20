@@ -17,4 +17,11 @@ class Movement extends Model
         'reason_id',
     ];
 
+    //Relacion muchos a muchos polimorfica
+    public function products()
+    {
+        return $this->morphToMany(Product::class, 'productable')->withPivot('quantity', 'price','subtotal')
+        ->withTimestamps();
+    }
+
 }

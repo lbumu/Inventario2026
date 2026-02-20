@@ -6,29 +6,13 @@ $links = [
         'href' => route('admin.dashboard'),
         'active' => request()->routeIs('admin.dashboard'),
     ],
-   
     [
-    'header'  => 'Administrar pagina'
+        'name' => 'Categories',
+        'icon' => 'fa-solid fa-list',
+        'href' => route('admin.categories.index'),
+        'active' => request()->routeIs('admin.categories.*'),
     ],
 
-     [
-        'name' => 'Dashboard',
-        'icon' => 'fa-solid fa-gauge',
-        'href' => route('admin.dashboard'),
-        'active' => request()->routeIs('admin.dashboard'),
-        'submenu' => [
-            [
-                'name' => 'Products',
-                'href' => '#',
-                'active' => false,
-            ],
-            [
-                'name' => 'Billing',
-                'href' => '#',
-                'active' => false,
-            ],
-        ],
-    ],
 ];
 
 

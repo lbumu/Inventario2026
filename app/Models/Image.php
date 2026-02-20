@@ -12,5 +12,11 @@ class Image extends Model
         'imageable_id',
         'imageable_type',
     ];
+    //Relacion uno a muchos polimorfica
+    public function imageable()
+    {
+        return $this->morphTo();            
+    }
+    
 
 }
