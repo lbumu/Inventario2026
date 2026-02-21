@@ -12,6 +12,12 @@ $links = [
         'href' => route('admin.categories.index'),
         'active' => request()->routeIs('admin.categories.*'),
     ],
+    [
+        'name' => 'Customers',
+        'icon' => 'fa-solid fa-users',
+        'href' => route('admin.customers.index'),
+        'active' => request()->routeIs('admin.customers.*'),
+    ],
 
 ];
 
