@@ -1,24 +1,13 @@
 @php
 $links = [
-    [
-        'name' => 'Dashboard',
-        'icon' => 'fa-solid fa-gauge',
-        'href' => route('admin.dashboard'),
-        'active' => request()->routeIs('admin.dashboard'),
-    ],
-    [
-        'name' => 'Categories',
-        'icon' => 'fa-solid fa-list',
-        'href' => route('admin.categories.index'),
-        'active' => request()->routeIs('admin.categories.*'),
-    ],
-    [
-        'name' => 'Customers',
+[
+    
+        'name' => 'Clientes',
         'icon' => 'fa-solid fa-users',
-        'href' => route('admin.customers.index'),
-        'active' => request()->routeIs('admin.customers.*'),
-    ],
-
+        'href' => route('admin.clientes.index'),
+        'active' => request()->routeIs('admin.clientes.*'),
+        ],
+    
 ];
 
 
