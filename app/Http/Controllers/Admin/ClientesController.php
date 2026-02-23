@@ -29,7 +29,22 @@ class ClientesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+       $data = $request->validate([
+            'name' => 'required|string|max:255',
+            'rut' => 'required|string|max:255|unique:clientes',
+            'address' => 'required|string|max:255',
+            'phone' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:clientes',
+        ]);
+        $clientes = Clientes::create($data);
+
+        session()->flash('swal', [
+            'title' => '¡Cliente creado exitosamente!',
+            'text' => 'El cliente ha sido creado correctamente.',
+            'icon' => 'success'
+        ]);
+
+        return redirect()->route('admin.clientes.edit', $clientes)->with('success', 'Cliente creado exitosamente');
     }
 
     /**

@@ -18,7 +18,8 @@
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
 
-        
+        <!-- SweetAlert2 -->
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
         <!-- wireui:scripts -->
          <wireui:scripts />
@@ -46,7 +47,6 @@
         <div class="ml-auto">
             {{ $action }}
         </div>
-        
     @endisset
 
     </div>
@@ -62,6 +62,14 @@
     <script src="https://cdn.jsdelivr.net/npm/flowbite@4.0.1/dist/flowbite.min.js"></script>
     
     <script src="https://kit.fontawesome.com/af60fb507a.js" crossorigin="anonymous"></script>
+
+    @if(session('swal'))
+    <script>
+       Swal.fire(@json(session('swal')));
+
+   </script>
+    @endif
+
 
     </body>
 </html>
