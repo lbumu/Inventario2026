@@ -44,30 +44,54 @@ class ClientesController extends Controller
             'icon' => 'success'
         ]);
 
-        return redirect()->route('admin.clientes.edit', $clientes)->with('success', 'Cliente creado exitosamente');
+        return redirect()->route('admin.clientes.edit', $cliente)->with('success', 'Cliente creado exitosamente');
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Clientes $clientes)
+    public function edit(Clientes $cliente)
     {
-        return view('admin.clientes.edit', compact('clientes'));
+        return view('admin.clientes.edit', compact('cliente'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Clientes $clientes)
+    public function update(Request $request, Clientes $cliente)
     {
-        //
+        $data = $request->validate([
+            'name' => 'required|string|max:255',
+            'rut' => 'required|string|max:255|unique:clientes,rut,' . $cliente->id,
+            'address' => 'required|string|max:255',
+            'phone' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:clientes,email,' . $cliente->id,
+        ]);
+
+        $cliente->update($data);
+
+        session()->flash('swal', [
+            'title' => '¡Cliente actualizado exitosamente!',
+            'text' => 'El cliente ha sido actualizado correctamente.',
+            'icon' => 'success'
+        ]);
+
+        return redirect()->route('admin.clientes.edit', $cliente)->with('success', 'Cliente actualizado exitosamente');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Clientes $clientes)
+    public function destroy(Clientes $cliente)
     {
-        //
+        $cliente->delete();
+
+        session()->flash('swal', [
+            'title' => '¡Cliente eliminado exitosamente!',
+            'text' => 'El cliente ha sido eliminado correctamente.',
+            'icon' => 'success'
+        ]);
+
+        return redirect()->route('admin.clientes.index')->with('success', 'Cliente eliminado exitosamente');
     }
 }
